@@ -1,0 +1,720 @@
+/* ==========================================
+   DAILY TASK PLANNER - NEW DESIGN
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f7fb;
+    color: #263238;
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   MAIN CONTAINER
+   ========================================== */
+
+.container {
+    max-width: 1150px;
+}
+
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.planner-header {
+    background: linear-gradient(135deg, #3f3d9e, #6c63c9);
+    color: white;
+    border-radius: 22px;
+    padding: 30px 35px;
+    margin-bottom: 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 10px 30px rgba(63, 61, 158, 0.20);
+}
+
+.welcome-text {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 7px;
+    opacity: 0.85;
+}
+
+.planner-header h1 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.header-text {
+    margin: 0;
+    opacity: 0.85;
+}
+
+.date-box {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    padding: 15px 20px;
+    min-width: 190px;
+    text-align: center;
+}
+
+.date-box span {
+    display: block;
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.date-box strong {
+    font-size: 15px;
+}
+
+
+/* ==========================================
+   SUMMARY PANEL
+   ========================================== */
+
+.summary-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    margin-bottom: 18px;
+}
+
+.summary-panel h2,
+.progress-panel h2,
+.filter-panel h3 {
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 0;
+    border-bottom: 1px solid #edf0f5;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item span {
+    color: #727985;
+    font-size: 14px;
+}
+
+.summary-item strong {
+    font-size: 23px;
+    color: #514bb2;
+}
+
+
+/* ==========================================
+   PROGRESS PANEL
+   ========================================== */
+
+.progress-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    margin-bottom: 18px;
+}
+
+.progress-heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.progress-heading strong {
+    color: #514bb2;
+}
+
+.progress {
+    height: 11px;
+    background: #eceef5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #514bb2, #8b85e5);
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+
+/* ==========================================
+   FILTER PANEL
+   ========================================== */
+
+.filter-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.filter-panel h3 {
+    margin-bottom: 14px;
+}
+
+.filter-btn {
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: #f5f6fa;
+    color: #555d68;
+    padding: 11px 14px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: 0.25s;
+}
+
+.filter-btn:hover {
+    background: #e9e8fb;
+    color: #514bb2;
+}
+
+.filter-btn.active {
+    background: #514bb2;
+    color: white;
+}
+
+
+/* ==========================================
+   ADD TASK PANEL
+   ========================================== */
+
+.add-task-panel {
+    background: white;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    margin-bottom: 18px;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.section-title p {
+    color: #858b95;
+    font-size: 13px;
+    margin: 0;
+}
+
+.add-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #eeedff;
+    color: #514bb2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 300;
+}
+
+.form-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #505762;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid #e1e4eb;
+    border-radius: 10px;
+    padding: 11px 13px;
+    font-size: 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #6c63c9;
+    box-shadow: 0 0 0 3px rgba(108, 99, 201, 0.10);
+}
+
+.add-task-btn {
+    width: 100%;
+    background: #514bb2;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.add-task-btn:hover {
+    background: #403a98;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.error-message {
+    color: #d63c4c;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+
+/* ==========================================
+   SEARCH PANEL
+   ========================================== */
+
+.search-panel {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    margin-bottom: 18px;
+}
+
+.search-panel .form-control {
+    border: none;
+    background: #f6f7fa;
+}
+
+.search-panel .form-control:focus {
+    box-shadow: none;
+}
+
+
+/* ==========================================
+   TASK PANEL
+   ========================================== */
+
+.tasks-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.tasks-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.tasks-heading h2 {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.tasks-heading p {
+    color: #858b95;
+    font-size: 13px;
+    margin: 0;
+}
+
+#taskCount {
+    background: #eeedff;
+    color: #514bb2;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   TASK CARD
+   ========================================== */
+
+.task-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 17px;
+    margin-bottom: 12px;
+
+    border: 1px solid #edf0f5;
+    border-radius: 14px;
+
+    background: #fff;
+
+    transition: 0.25s;
+}
+
+.task-card:hover {
+    border-color: #d9d6fa;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+}
+
+.task-checkbox {
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
+    accent-color: #514bb2;
+}
+
+.task-information {
+    min-width: 0;
+}
+
+.task-name {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 7px;
+    word-break: break-word;
+}
+
+.task-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.task-time {
+    font-size: 12px;
+    color: #858b95;
+}
+
+
+/* ==========================================
+   PRIORITY
+   ========================================== */
+
+.priority {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 9px;
+    border-radius: 20px;
+}
+
+.priority.high {
+    background: #ffe5e7;
+    color: #c93645;
+}
+
+.priority.medium {
+    background: #fff1d5;
+    color: #a66a00;
+}
+
+.priority.low {
+    background: #ddf7e8;
+    color: #21804c;
+}
+
+
+/* ==========================================
+   COMPLETED TASK
+   ========================================== */
+
+.task-card.completed {
+    background: #fafbfc;
+    opacity: 0.75;
+}
+
+.task-card.completed .task-name {
+    text-decoration: line-through;
+    color: #9298a2;
+}
+
+
+/* ==========================================
+   TASK ACTIONS
+   ========================================== */
+
+.task-actions {
+    display: flex;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+.task-actions button {
+    border: none;
+    padding: 7px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.edit-btn {
+    background: #eeedff;
+    color: #514bb2;
+}
+
+.edit-btn:hover {
+    background: #dddafe;
+}
+
+.delete-btn {
+    background: #ffe7e8;
+    color: #c93645;
+}
+
+.delete-btn:hover {
+    background: #ffd5d8;
+}
+
+
+/* ==========================================
+   EDIT AREA
+   ========================================== */
+
+.edit-area {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 8px;
+    align-items: center;
+}
+
+.edit-input,
+.edit-time,
+.edit-priority {
+    width: 100%;
+    border: 1px solid #dfe2e9;
+    border-radius: 8px;
+    padding: 9px;
+    font-size: 13px;
+    outline: none;
+}
+
+.edit-input:focus,
+.edit-time:focus,
+.edit-priority:focus {
+    border-color: #6c63c9;
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.save-btn,
+.cancel-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 9px 11px;
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.save-btn {
+    background: #ddf7e8;
+    color: #21804c;
+}
+
+.save-btn:hover {
+    background: #c9f0da;
+}
+
+.cancel-btn {
+    background: #ffe7e8;
+    color: #c93645;
+}
+
+.cancel-btn:hover {
+    background: #ffd5d8;
+}
+
+
+/* ==========================================
+   EMPTY MESSAGE
+   ========================================== */
+
+.empty-message {
+    text-align: center;
+    padding: 45px 20px;
+    color: #858b95;
+}
+
+.empty-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.empty-message h3 {
+    font-size: 18px;
+    color: #4e5560;
+    margin-bottom: 6px;
+}
+
+.empty-message p {
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+footer {
+    text-align: center;
+    color: #9298a2;
+    font-size: 12px;
+    padding: 20px 0 5px;
+}
+
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   ========================================== */
+
+@media (max-width: 991px) {
+
+    .planner-header {
+        padding: 25px;
+    }
+
+    .date-box {
+        min-width: 165px;
+    }
+
+    .edit-area {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .edit-buttons {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    body {
+        padding-bottom: 20px;
+    }
+
+    .planner-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 23px;
+        border-radius: 17px;
+    }
+
+    .planner-header h1 {
+        font-size: 28px;
+    }
+
+    .date-box {
+        width: 100%;
+    }
+
+    .task-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .task-actions {
+        width: 100%;
+    }
+
+    .task-actions button {
+        flex: 1;
+    }
+
+    .edit-area {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-buttons {
+        grid-column: auto;
+    }
+
+    .save-btn,
+    .cancel-btn {
+        flex: 1;
+    }
+
+    .tasks-heading {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .planner-header {
+        padding: 20px;
+    }
+
+    .planner-header h1 {
+        font-size: 25px;
+    }
+
+    .add-task-panel,
+    .tasks-panel,
+    .summary-panel,
+    .progress-panel,
+    .filter-panel {
+        padding: 20px;
+    }
+
+    .task-content {
+        width: 100%;
+    }
+
+    .task-actions {
+        flex-direction: column;
+    }
+
+    .tasks-heading {
+        flex-direction: column;
+    }
+
+}
